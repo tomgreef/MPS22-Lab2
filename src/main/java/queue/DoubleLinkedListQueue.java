@@ -1,11 +1,11 @@
 package queue;
 
-public class DoubleLinkedListQueue<T> implements DoubleEndedQueue {
-    private DequeNode<T> first, last;
+public class DoubleLinkedListQueue implements DoubleEndedQueue {
+    private DequeNode head, tail;
     private int size;
 
     public DoubleLinkedListQueue() {
-        first = last = null;
+        head = tail = null;
         size = 0;
     }
 
@@ -14,12 +14,12 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue {
         if (node == null)
             throw new RuntimeException("Node is null");
 
-        if (first == null)
-            last = first = node;
+        if (head == null)
+            tail = head = node;
         else {
-            node.setNext(first);
-            first.setPrevious(node);
-            first = node;
+            node.setNext(tail);
+            tail.setPrevious(node);
+            tail = node;
         }
         size++;
     }
@@ -29,64 +29,68 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue {
         if (node == null)
             throw new RuntimeException("Node is null");
 
-        if (last == null)
-            first = last = node;
+        if (head == null)
+            head = tail = node;
         else {
-            node.setPrevious(last);
-            last.setNext(node);
-            last = node;
+            node.setPrevious(head);
+            head.setNext(node);
+            head = node;
         }
         size++;
     }
 
     @Override
     public void deleteFirst() {
-        if (size() == 0)
+        if (isEmpty())
             throw new RuntimeException("Queue is empty");
 
-        first = first.getNext();
+        head = head.getNext();
 
-        if (first == null)
-            last = null;
+        if (head == null)
+            tail = null;
         else
-            first.setPrevious(null);
+            head.setPrevious(null);
 
         size--;
     }
 
     @Override
     public void deleteLast() {
-        if (size() == 0)
+        if (isEmpty())
             throw new RuntimeException("Queue is empty");
 
-        last = last.getPrevious();
+        tail = tail.getPrevious();
 
-        if (last == null)
-            first = null;
+        if (tail == null)
+            head = null;
         else
-            last.setNext(null);
+            tail.setNext(null);
 
         size--;
     }
 
     @Override
     public DequeNode peekFirst() {
-        if (size() == 0)
-            throw new RuntimeException("Queue is empty");
+        if (isEmpty())
+            return null;
 
-        return first;
+        return head;
     }
 
     @Override
     public DequeNode peekLast() {
-        if (size() == 0)
-            throw new RuntimeException("Queue is empty");
+        if (isEmpty())
+            return null;
 
-        return last;
+        return tail;
     }
 
     @Override
     public int size() {
         return size;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
     }
 }
