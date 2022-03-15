@@ -66,8 +66,8 @@ public class DoubleLinkedListQueueTest {
         dequeNodeFirst = new DequeNode<String>("First", dequeNodeLast, null);
         dequeNodeLast = new DequeNode<String>("Last", null, dequeNodeFirst);
 
-        doubleLinkedListQueue.append(dequeNodeLast);
         doubleLinkedListQueue.appendLeft(dequeNodeFirst);
+        doubleLinkedListQueue.append(dequeNodeLast);
         assertEquals(dequeNodeLast, doubleLinkedListQueue.peekLast());
     }
 
