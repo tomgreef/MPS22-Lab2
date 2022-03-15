@@ -6,6 +6,7 @@ package queue;
  * The previous and next of the first and last node of the deque is null.
  *
  * @param <T>
+ * @author Tom & Parsa
  */
 public class DequeNode<T> {
     private T item ;
