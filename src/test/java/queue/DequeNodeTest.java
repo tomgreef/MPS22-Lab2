@@ -19,7 +19,6 @@ public class DequeNodeTest<T> {
 
 
     @Test
-    @Tag("Node")
     @DisplayName("the list only contains one element")
     public void listSizeIsOne() {
         dequeNode = new DequeNode<>("Start", null, null);
@@ -36,7 +35,6 @@ public class DequeNodeTest<T> {
     }
 
     @Test
-    @Tag("Node")
     @DisplayName("the list contains two elements")
     public void listSizeIsTwo() {
         dequeNodeNext = new DequeNode<>("End", null, dequeNode);
@@ -64,7 +62,6 @@ public class DequeNodeTest<T> {
     }
 
     @Test
-    @Tag("Node")
     @DisplayName("the list contains three elements")
     public void listSizeIsThree() {
         dequeNodeNext = new DequeNode<>("End", null, dequeNode);
@@ -102,13 +99,12 @@ public class DequeNodeTest<T> {
     }
 
     @Test
-    @Tag("Exceptions")
     @DisplayName("null is passed as the constructor's arguments")
     public void wePassNullAsArgument() {
         assertThrows(RuntimeException.class, () -> dequeNode = new DequeNode<>(null,null,null)) ;
     }
 
-    
+
 
 
 //    @Test

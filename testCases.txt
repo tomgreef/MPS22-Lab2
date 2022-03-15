@@ -14,14 +14,7 @@ Size=1	- DeleteFirst  -> size=0
 DequeNode TestCases
 
 --Exceptions
---Size == 0
-
-Size=0	- getItem  -> Exception 
-Size=0	- getNext  -> Exception
-Size=0	- getPrevious  -> Exception
-Size=0	- isFirstNode  -> Exception 
-Size=0	- isLastNode  -> Exception 
-Size=0	- isNotATerminalNode  -> Exception
+Item=null - Exception
 
 --Size == 1
 
@@ -53,7 +46,7 @@ Size=2	- isNotATerminalNode  -> False
 
 
 --Size == 3 
---Item Pos == first
+--Item Pos == First
 
 Size=3	- getItem -> Returns the Same Item 
 Size=3	- getNext -> Returns the middle Item of the list (next one) 
@@ -62,7 +55,7 @@ Size=3  - isFirstNode -> True
 Size=3  - isLastNode  -> False
 Size=3	- isNotATerminalNode  -> False
 
---Item Pos == second
+--Item Pos == Second
 
 Size=3	- getItem -> Returns the Same Item 
 Size=3	- getNext -> Returns the last Item of the list (next one) 
