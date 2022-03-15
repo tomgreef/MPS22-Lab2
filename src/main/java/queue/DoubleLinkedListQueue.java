@@ -41,7 +41,7 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
 
     @Override
     public void deleteFirst() {
-        if (size() == 0)
+        if (isEmpty())
             throw new RuntimeException("Queue is empty");
 
         head = head.getNext();
@@ -56,7 +56,7 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
 
     @Override
     public void deleteLast() {
-        if (size() == 0)
+        if (isEmpty())
             throw new RuntimeException("Queue is empty");
 
         tail = tail.getPrevious();
@@ -71,16 +71,16 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
 
     @Override
     public DequeNode peekFirst() {
-        if (size() == 0)
-            throw new RuntimeException("Queue is empty");
+        if (isEmpty())
+            return null;
 
         return head;
     }
 
     @Override
     public DequeNode peekLast() {
-        if (size() == 0)
-            throw new RuntimeException("Queue is empty");
+        if (isEmpty())
+            return null;
 
         return tail;
     }
@@ -88,5 +88,9 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
     @Override
     public int size() {
         return size;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
     }
 }

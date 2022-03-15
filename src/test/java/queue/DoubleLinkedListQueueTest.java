@@ -52,8 +52,8 @@ public class DoubleLinkedListQueueTest {
     public void testPeekFirstItem() {
         DequeNode<String> dequeNodeFirst = null, dequeNodeLast = null;
         dequeNodeFirst = new DequeNode<String>("First", dequeNodeLast, null);
-        dequeNodeLast = new DequeNode<String>("Last", null , dequeNodeFirst);
-        
+        dequeNodeLast = new DequeNode<String>("Last", null, dequeNodeFirst);
+
         doubleLinkedListQueue.append(dequeNodeLast);
         doubleLinkedListQueue.appendLeft(dequeNodeFirst);
         assertEquals(dequeNodeFirst, doubleLinkedListQueue.peekFirst());
@@ -64,7 +64,7 @@ public class DoubleLinkedListQueueTest {
     public void testPeekLasttItem() {
         DequeNode<String> dequeNodeFirst = null, dequeNodeLast = null;
         dequeNodeFirst = new DequeNode<String>("First", dequeNodeLast, null);
-        dequeNodeLast = new DequeNode<String>("Last", null , dequeNodeFirst);
+        dequeNodeLast = new DequeNode<String>("Last", null, dequeNodeFirst);
 
         doubleLinkedListQueue.append(dequeNodeLast);
         doubleLinkedListQueue.appendLeft(dequeNodeFirst);
@@ -73,22 +73,90 @@ public class DoubleLinkedListQueueTest {
 
     @Test
     @DisplayName("Throws exception on deleting in empty Queue")
-    public void testThrowsRuntimeExceptionIfEmpty(){
+    public void testThrowsRuntimeExceptionIfEmpty() {
         assertThrows(RuntimeException.class, () -> doubleLinkedListQueue.deleteFirst());
         assertThrows(RuntimeException.class, () -> doubleLinkedListQueue.deleteLast());
     }
 
     @Test
     @DisplayName("Throws exception on appending null node")
-    public void testThrowsRuntimeExceptionIfAppendingNull(){
+    public void testThrowsRuntimeExceptionIfAppendingNull() {
         assertThrows(RuntimeException.class, () -> doubleLinkedListQueue.append(null));
         assertThrows(RuntimeException.class, () -> doubleLinkedListQueue.appendLeft(null));
     }
 
     @Test
-    @DisplayName("Throws exception on peeking in empty Queue")
-    public void testThrowsRuntimeExceptionIfPeekingInEmptyQueue(){
-        assertThrows(RuntimeException.class, () -> doubleLinkedListQueue.peekFirst());
-        assertThrows(RuntimeException.class, () -> doubleLinkedListQueue.peekLast());
+    @DisplayName("Return null on peeking in empty Queue")
+    public void testReturnsNullIfPeekingInEmptyQueue() {
+        assertNull(doubleLinkedListQueue.peekLast());
+        assertNull(doubleLinkedListQueue.peekFirst());
+    }
+
+    @Test
+    @DisplayName("Is Empty return true on empty")
+    public void testReturnsTrueIfEmpty() {
+        DequeNode<String> dequeNode = null;
+        dequeNode = new DequeNode<String>("Start", new DequeNode<>("End", null, dequeNode), null);
+
+        assertTrue(doubleLinkedListQueue.isEmpty());
+        doubleLinkedListQueue.append(dequeNode);
+        assertFalse(doubleLinkedListQueue.isEmpty());
+        doubleLinkedListQueue.deleteLast();
+        assertTrue(doubleLinkedListQueue.isEmpty());
+    }
+
+    @Test
+    @DisplayName("Constructor creates a DoubleLinkedListQueue")
+    public void testCreatesADoubleLinkedListQueue() {
+        assertEquals(0, doubleLinkedListQueue.size());
+        assertNull(doubleLinkedListQueue.peekLast());
+        assertNull(doubleLinkedListQueue.peekFirst());
+        assertNotNull(doubleLinkedListQueue = new DoubleLinkedListQueue());
+    }
+
+    @Test
+    @DisplayName("Appends adds 3 DequeNodes to the queue")
+    public void testAppends3DequeNodes() {
+        DequeNode dequeNode, dequeNodeFirst, dequeNodeLast;
+        dequeNode = new DequeNode<String>("Middle", null, null);
+        dequeNodeFirst = new DequeNode<String>("First", null, null);
+        dequeNodeLast = new DequeNode<String>("Last", null, null);
+
+        assertTrue(doubleLinkedListQueue.isEmpty());
+        doubleLinkedListQueue.append(dequeNodeFirst);
+        assertEquals(1, doubleLinkedListQueue.size());
+        assertSame(doubleLinkedListQueue.peekFirst(), dequeNodeFirst);
+        assertNotNull(doubleLinkedListQueue.peekLast()); // If 1 node, then first = last = node
+        doubleLinkedListQueue.append(dequeNode);
+        assertEquals(2, doubleLinkedListQueue.size());
+        assertSame(doubleLinkedListQueue.peekFirst(), dequeNodeFirst);
+        assertSame(doubleLinkedListQueue.peekLast(), dequeNode);
+        doubleLinkedListQueue.append(dequeNodeLast);
+        assertEquals(3, doubleLinkedListQueue.size());
+        assertSame(doubleLinkedListQueue.peekFirst(), dequeNodeFirst);
+        assertSame(doubleLinkedListQueue.peekLast(), dequeNodeLast);
+    }
+
+    @Test
+    @DisplayName("LeftAppend adds 3 DequeNodes to the queue")
+    public void testLeftAppends3DequeNodes() {
+        DequeNode dequeNode, dequeNodeFirst, dequeNodeLast;
+        dequeNode = new DequeNode<String>("Middle", null, null);
+        dequeNodeFirst = new DequeNode<String>("First", null, null);
+        dequeNodeLast = new DequeNode<String>("Last", null, null);
+
+        assertTrue(doubleLinkedListQueue.isEmpty());
+        doubleLinkedListQueue.appendLeft(dequeNodeLast);
+        assertEquals(1, doubleLinkedListQueue.size());
+        assertSame(doubleLinkedListQueue.peekFirst(), dequeNodeLast);
+        assertNotNull(doubleLinkedListQueue.peekLast()); // If 1 node, then first = last = node
+        doubleLinkedListQueue.appendLeft(dequeNode);
+        assertEquals(2, doubleLinkedListQueue.size());
+        assertSame(doubleLinkedListQueue.peekFirst(), dequeNode);
+        assertSame(doubleLinkedListQueue.peekLast(), dequeNodeLast);
+        doubleLinkedListQueue.appendLeft(dequeNodeFirst);
+        assertEquals(3, doubleLinkedListQueue.size());
+        assertSame(doubleLinkedListQueue.peekFirst(), dequeNodeFirst);
+        assertSame(doubleLinkedListQueue.peekLast(), dequeNodeLast);
     }
 }
