@@ -1,11 +1,8 @@
 No element - peekFirst-> exception
 No element - peekLast-> exception
-Full - AppendLeft -> exception
-Full - Append -> exception
 DeleteFirst - no element -> exception
 DeleteLast - no element -> exception 
-size==0 - Append -> exception
-size==0 - AppendLeft -> exception 
+
 
 
 Size=1  - peekFirst and peekLast -> same element
