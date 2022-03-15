@@ -1,17 +1,6 @@
-No element - peekFirst-> exception
-No element - peekLast-> exception
-DeleteFirst - no element -> exception
-DeleteLast - no element -> exception 
-
-
-
-Size=1  - peekFirst and peekLast -> same element
-Size=1	- DeleteLast  -> size=0
-Size=1	- DeleteFirst  -> size=0
-
 ------------------------------------------------------
 
-DequeNode TestCases
+/* DequeNode TestCases */
 
 --Exceptions
 Item=null - Exception
@@ -26,7 +15,7 @@ Size=1  - isLastNode  -> True
 Size=1	- isNotATerminalNode  -> False
 
 --Size == 2 
---Item Pos == first
+--Item Position == first
 
 Size=2	- getItem -> Returns the Same Item 
 Size=2	- getNext -> Returns the last Item of the list (next one) 
@@ -35,7 +24,7 @@ Size=2  - isFirstNode -> True
 Size=2  - isLastNode  -> False
 Size=2	- isNotATerminalNode  -> False
 
---Item Pos == second
+--Item Position == second
 
 Size=2	- getItem -> Exception 
 Size=2	- getNext -> Returns the last Item of the list (next one) 
@@ -46,7 +35,7 @@ Size=2	- isNotATerminalNode  -> False
 
 
 --Size == 3 
---Item Pos == First
+--Item Position == First
 
 Size=3	- getItem -> Returns the Same Item 
 Size=3	- getNext -> Returns the middle Item of the list (next one) 
@@ -55,7 +44,7 @@ Size=3  - isFirstNode -> True
 Size=3  - isLastNode  -> False
 Size=3	- isNotATerminalNode  -> False
 
---Item Pos == Second
+--Item Positionition == Second
 
 Size=3	- getItem -> Returns the Same Item 
 Size=3	- getNext -> Returns the last Item of the list (next one) 
@@ -64,7 +53,7 @@ Size=3  - isFirstNode -> False
 Size=3  - isLastNode  -> False
 Size=3	- isNotATerminalNode  -> True
 
---Item Pos == third
+--Item Position == third
 
 Size=3	- getItem -> Returns the Same Item 
 Size=3	- getNext -> Returns exception
@@ -74,6 +63,29 @@ Size=3  - isLastNode  -> True
 Size=3	- isNotATerminalNode  -> False
 
 
---
+------------------------------------------------------
+/* DoubleLinkedListQueueTest */
 
+--Exceptions
+Empty Queue - DeleteFirst() -> Returns exception
+Empty Queue - DeleteLast() -> Returns exception
+            - append(null) -> Returns exception
+            - appendLeft(null) -> Returns exception
 
+--Size
+append() -> Increments size
+appendLeft() -> Increments size
+append() -> Decrements size
+appendLeft() -> Decrements size
+
+--Peek
+peekFirst() -> Returns Head
+peekLast() -> Returns Tail
+
+--Empty Queue
+peekLast() -> null
+peekFirst() -> null
+isEmpty() -> True
+
+--3 Nodes Append()
+--3 Nodes AppendLeft()
