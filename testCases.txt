@@ -1,0 +1,89 @@
+No element - peekFirst-> exception
+No element - peekLast-> exception
+Full - AppendLeft -> exception
+Full - Append -> exception
+DeleteFirst - no element -> exception
+DeleteLast - no element -> exception 
+size==0 - Append -> exception
+size==0 - AppendLeft -> exception 
+
+
+Size=1  - peekFirst and peekLast -> same element
+Size=1	- DeleteLast  -> size=0
+Size=1	- DeleteFirst  -> size=0
+
+------------------------------------------------------
+
+DequeNode TestCases
+
+--Exceptions
+--Size == 0
+
+Size=0	- getItem  -> Exception 
+Size=0	- getNext  -> Exception
+Size=0	- getPrevious  -> Exception
+Size=0	- isFirstNode  -> Exception 
+Size=0	- isLastNode  -> Exception 
+Size=0	- isNotATerminalNode  -> Exception
+
+--Size == 1
+
+Size=1	- getItem -> Returns Same Item 
+Size=1	- getNext -> Returns Same Item 
+Size=1	- getPrevious -> Returns Same Item
+Size=1  - isFirstNode -> True
+Size=1  - isLastNode  -> True 
+Size=1	- isNotATerminalNode  -> False
+
+--Size == 2 
+--Item Pos == first
+
+Size=2	- getItem -> Returns the Same Item 
+Size=2	- getNext -> Returns the last Item of the list (next one) 
+Size=2	- getPrevious -> Returns Exception
+Size=2  - isFirstNode -> True
+Size=2  - isLastNode  -> False
+Size=2	- isNotATerminalNode  -> False
+
+--Item Pos == second
+
+Size=2	- getItem -> Exception 
+Size=2	- getNext -> Returns the last Item of the list (next one) 
+Size=2	- getPrevious -> Returns Exception
+Size=2  - isFirstNode -> True
+Size=2  - isLastNode  -> False
+Size=2	- isNotATerminalNode  -> False
+
+
+--Size == 3 
+--Item Pos == first
+
+Size=3	- getItem -> Returns the Same Item 
+Size=3	- getNext -> Returns the middle Item of the list (next one) 
+Size=3	- getPrevious -> Returns Exception
+Size=3  - isFirstNode -> True
+Size=3  - isLastNode  -> False
+Size=3	- isNotATerminalNode  -> False
+
+--Item Pos == second
+
+Size=3	- getItem -> Returns the Same Item 
+Size=3	- getNext -> Returns the last Item of the list (next one) 
+Size=3	- getPrevious -> Returns the first element
+Size=3  - isFirstNode -> False
+Size=3  - isLastNode  -> False
+Size=3	- isNotATerminalNode  -> True
+
+--Item Pos == third
+
+Size=3	- getItem -> Returns the Same Item 
+Size=3	- getNext -> Returns exception
+Size=3	- getPrevious -> Returns the middle element
+Size=3  - isFirstNode -> False
+Size=3  - isLastNode  -> True
+Size=3	- isNotATerminalNode  -> False
+
+
+--
+
+
