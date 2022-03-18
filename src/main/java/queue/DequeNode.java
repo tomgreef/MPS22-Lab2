@@ -9,10 +9,24 @@ package queue;
  * @author Tom & Parsa
  */
 public class DequeNode<T> {
-    private T item ;
-    private DequeNode<T> next ;
-    private DequeNode<T> previous ;
+    private T item;
+    private DequeNode<T> next;
+    private DequeNode<T> previous;
 
+    // Setters
+    public void setItem(T item) {
+        this.item = item;
+    }
+
+    public void setNext(DequeNode<T> next) {
+        this.next = next;
+    }
+
+    public void setPrevious(DequeNode<T> previous) {
+        this.previous = previous;
+    }
+
+    // Getters
     public T getItem() {
         return item;
     }
@@ -25,33 +39,24 @@ public class DequeNode<T> {
         return previous;
     }
 
-    public void setNext(DequeNode<T> next) {
-        this.next = next;
-    }
-
-    public void setPrevious(DequeNode<T> previous) {
-        this.previous = previous;
-    }
-
-
     public DequeNode(T item, DequeNode<T> next, DequeNode<T> previous) {
-        this.item = item ;
-        this.next = next ;
-        this.previous = previous ;
+        this.item = item;
+        this.next = next;
+        this.previous = previous;
         if(item==null) throw new RuntimeException("the element cannot be null");
         if(next==this || previous==this) throw new RuntimeException("the passed element cannot be the same");
     }
 
     public boolean isFirstNode() {
-        return previous == null ;
+        return previous == null;
     }
 
     public boolean isLastNode() {
-        return next == null ;
+        return next == null;
     }
 
     public boolean isNotATerminalNode() {
-        return (!isFirstNode() && !isLastNode()) ;
+        return (!isFirstNode() && !isLastNode());
     }
 
 }
