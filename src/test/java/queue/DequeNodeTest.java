@@ -104,24 +104,16 @@ public class DequeNodeTest<T> {
         assertThrows(RuntimeException.class, () -> dequeNode = new DequeNode<>(null,null,null)) ;
     }
 
+    @Test
+    @DisplayName("after setting the node returns same item")
+    public void setItemDequeNode() {
+        dequeNode = new DequeNode<>("Start", null, null);
+        dequeNode.setItem("End");
+        assertTrue(dequeNode.getItem() == "End");
+    }
 
 
 
-//    @Test
-//    @Tag("Node")
-//    @DisplayName("the list contains two elements (element position is two)")
-//    public void listSizeIsTwoElementPosTwo() {
-//        dequeNodePrevious = new DequeNode<>("End", dequeNode, null);
-//        dequeNode = new DequeNode<>("Start", null, dequeNodePrevious);
-//        assertAll(
-//                "heading",
-//                () -> assertEquals("Start", dequeNode.getItem(), "It returns the same value"),
-//                () -> assertEquals(null, dequeNode.getNext(), "No finds element End"),
-//                () -> assertEquals(dequeNodePrevious, dequeNode.getPrevious(), "returns dequeNodePrevious"),
-//                () -> assertEquals(false, dequeNode.isFirstNode(), "Returns False"),
-//                () -> assertEquals(true, dequeNode.isLastNode(), "Returns True"),
-//                () -> assertEquals(false, dequeNode.isNotATerminalNode(), "Returns False")
-//        );
-//    }
+
 
 }
