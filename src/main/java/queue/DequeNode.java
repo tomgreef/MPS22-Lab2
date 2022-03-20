@@ -8,7 +8,7 @@ package queue;
  * @param <T>
  * @author Tom & Parsa
  */
-public class DequeNode<T> {
+public class DequeNode<T> implements Comparable<DequeNode>{
     private T item;
     private DequeNode<T> next;
     private DequeNode<T> previous;
@@ -59,4 +59,8 @@ public class DequeNode<T> {
         return (!isFirstNode() && !isLastNode());
     }
 
+    @Override
+    public int compareTo(DequeNode o) {
+        return this.item.toString().compareTo(o.getItem().toString());
+    }
 }

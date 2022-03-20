@@ -109,7 +109,7 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
 
     @Override
     public void sort(Comparator comparator) {
-
+        
     }
 
     public boolean isEmpty() {
