@@ -1,6 +1,10 @@
 package queue;
 
+import sort.StringComparator;
+
 import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class DoubleLinkedListQueue implements DoubleEndedQueue {
     private DequeNode head, tail;
@@ -94,22 +98,75 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
 
     @Override
     public DequeNode getAt(int position) {
+        DequeNode node = head;
+        int counter = 0;
+
+        while (!node.isLastNode())
+            if (counter == position)
+                return node;
+            else {
+                node = node.getNext();
+                counter++;
+            }
+
         return null;
     }
 
     @Override
     public DequeNode find(Object item) {
+        DequeNode node = head;
+
+        while (!node.isLastNode())
+            if (node.equals(item))
+                return node;
+            else
+                node = node.getNext();
+
         return null;
     }
 
     @Override
     public void delete(DequeNode node) {
+        DequeNode aux = head;
+        boolean found = false;
 
+        while (!aux.isLastNode() && !found)
+            if (aux.equals(node)) {
+                aux.getPrevious().setNext(aux.getNext());
+                aux.getNext().setPrevious(aux.getPrevious());
+                aux = null;
+                found = true;
+            } else
+                aux = aux.getNext();
+
+        if (!found)
+            throw new RuntimeException("Node: " + node + " not found");
     }
 
     @Override
     public void sort(Comparator comparator) {
+        List<DequeNode> list = new LinkedList<DequeNode>();
+        DequeNode aux = head;
 
+        while(aux.getNext() != null){
+            list.add(aux);
+            aux = aux.getNext();
+        }
+
+        list.sort(new StringComparator());
+        head = list.get(0);
+        head.setPrevious(null);
+        list.remove(head);
+        aux = head;
+
+        for (DequeNode node : list){
+            aux.setNext(node);
+            node.setPrevious(aux);
+            aux = node;
+        }
+
+        tail = list.get(list.size()-1);
+        tail.setNext(null);
     }
 
     public boolean isEmpty() {
