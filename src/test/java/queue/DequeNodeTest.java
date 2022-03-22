@@ -27,8 +27,8 @@ public class DequeNodeTest<T> {
                 () -> assertEquals("Start", dequeNode.getItem(), "It returns the same value"),
                 () -> assertEquals(null, dequeNode.getNext(), "No elements returns null"),
                 () -> assertEquals(null, dequeNode.getPrevious(), "No elements returns null"),
-                () -> assertEquals(true, dequeNode.isFirstNode(), "Returns True"),
-                () -> assertEquals(true, dequeNode.isLastNode(), "Returns True"),
+                () -> assertEquals(true, dequeNode.isHeadNode(), "Returns True"),
+                () -> assertEquals(true, dequeNode.isTailNode(), "Returns True"),
                 () -> assertEquals(false, dequeNode.isNotATerminalNode(), "Returns False")
 
         );
@@ -47,15 +47,15 @@ public class DequeNodeTest<T> {
                 () -> assertEquals("Start", dequeNode.getItem(), "It returns the same value"),
                 () -> assertEquals(dequeNodeNext, dequeNode.getNext(), "Returns the last value"),
                 () -> assertEquals(null, dequeNode.getPrevious(), "No elements returns null"),
-                () -> assertEquals(true, dequeNode.isFirstNode(), "Returns True"),
-                () -> assertEquals(false, dequeNode.isLastNode(), "Returns False"),
+                () -> assertEquals(true, dequeNode.isHeadNode(), "Returns True"),
+                () -> assertEquals(false, dequeNode.isTailNode(), "Returns False"),
                 () -> assertEquals(false, dequeNode.isNotATerminalNode(), "Returns False"),
 //                 last Element
                 () -> assertEquals("End", dequeNodeNext.getItem(), "It returns the same value"),
                 () -> assertEquals(null, dequeNodeNext.getNext(), "No element returns null"),
                 () -> assertEquals(dequeNode, dequeNodeNext.getPrevious(), "Returns dequeNode as the previous value"),
-                () -> assertEquals(false, dequeNodeNext.isFirstNode(), "Returns False"),
-                () -> assertEquals(true, dequeNodeNext.isLastNode(), "Returns True"),
+                () -> assertEquals(false, dequeNodeNext.isHeadNode(), "Returns False"),
+                () -> assertEquals(true, dequeNodeNext.isTailNode(), "Returns True"),
                 () -> assertEquals(false, dequeNodeNext.isNotATerminalNode(), "Returns False")
 
         );
@@ -78,22 +78,22 @@ public class DequeNodeTest<T> {
                 () -> assertEquals("First", dequeNodePrevious.getItem(), "It returns the same value"),
                 () -> assertEquals(dequeNode, dequeNodePrevious.getNext(), "Returns the middle element"),
                 () -> assertEquals(null, dequeNodePrevious.getPrevious(), "No element returns null"),
-                () -> assertEquals(true, dequeNodePrevious.isFirstNode(), "Returns True"),
-                () -> assertEquals(false, dequeNodePrevious.isLastNode(), "Returns False"),
+                () -> assertEquals(true, dequeNodePrevious.isHeadNode(), "Returns True"),
+                () -> assertEquals(false, dequeNodePrevious.isTailNode(), "Returns False"),
                 () -> assertEquals(false, dequeNodePrevious.isNotATerminalNode(), "Returns False"),
                 // middle Element
                 () -> assertEquals("Start", dequeNode.getItem(), "It returns the same value"),
                 () -> assertEquals(dequeNodeNext, dequeNode.getNext(), "Returns the last value"),
                 () -> assertEquals(dequeNodePrevious, dequeNode.getPrevious(), "Returns the first value"),
-                () -> assertEquals(false, dequeNode.isFirstNode(), "Returns False"),
-                () -> assertEquals(false, dequeNode.isLastNode(), "Returns False"),
+                () -> assertEquals(false, dequeNode.isHeadNode(), "Returns False"),
+                () -> assertEquals(false, dequeNode.isTailNode(), "Returns False"),
                 () -> assertEquals(true, dequeNode.isNotATerminalNode(), "Returns True"),
 //                 last Element
                 () -> assertEquals("End", dequeNodeNext.getItem(), "It returns the same value"),
                 () -> assertEquals(null, dequeNodeNext.getNext(), "No element returns null"),
                 () -> assertEquals(dequeNode, dequeNodeNext.getPrevious(), "Returns dequeNode as the previous value"),
-                () -> assertEquals(false, dequeNodeNext.isFirstNode(), "Returns False"),
-                () -> assertEquals(true, dequeNodeNext.isLastNode(), "Returns True"),
+                () -> assertEquals(false, dequeNodeNext.isHeadNode(), "Returns False"),
+                () -> assertEquals(true, dequeNodeNext.isTailNode(), "Returns True"),
                 () -> assertEquals(false, dequeNodeNext.isNotATerminalNode(), "Returns False")
         );
     }

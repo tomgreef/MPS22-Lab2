@@ -43,20 +43,20 @@ public class DequeNode<T> {
         this.item = item;
         this.next = next;
         this.previous = previous;
-        if(item==null) throw new RuntimeException("the element cannot be null");
-        if(next==this || previous==this) throw new RuntimeException("the passed element cannot be the same");
+        if(item==null) throw new RuntimeException("The element cannot be null");
+        if(next==this || previous==this) throw new RuntimeException("The passed element cannot be the same");
     }
 
-    public boolean isFirstNode() {
+    public boolean isHeadNode() {
         return previous == null;
     }
 
-    public boolean isLastNode() {
+    public boolean isTailNode() {
         return next == null;
     }
 
     public boolean isNotATerminalNode() {
-        return (!isFirstNode() && !isLastNode());
+        return (!isHeadNode() && !isTailNode());
     }
 
 }
