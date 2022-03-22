@@ -43,7 +43,7 @@ public class DequeNode<T> {
         this.item = item;
         this.next = next;
         this.previous = previous;
-        if(next==this || previous==this) throw new RuntimeException("The passed element cannot be the same");
+        if (item == null) throw new RuntimeException("The passed element cannot be the same");
     }
 
     public boolean isHeadNode() {

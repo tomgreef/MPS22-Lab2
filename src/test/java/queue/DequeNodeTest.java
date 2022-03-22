@@ -105,7 +105,7 @@ public class DequeNodeTest<T> {
     }
 
     @Test
-    @DisplayName("Null is passed as the constructor's arguments")
+    @DisplayName("Null as Item of the constructor's argument throws RuntimeException")
     public void wePassNullAsArgument() {
         assertThrows(RuntimeException.class, () -> dequeNode = new DequeNode<>(null, null, null));
     }
