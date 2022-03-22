@@ -23,8 +23,9 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
         if (head == null)
             tail = head = node;
         else {
-            node.setNext(tail);
-            tail.setPrevious(node);
+            node.setNext(null);
+            node.setPrevious(tail);
+            tail.setNext(node);
             tail = node;
         }
         size++;
@@ -38,8 +39,9 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
         if (head == null)
             head = tail = node;
         else {
-            node.setPrevious(head);
-            head.setNext(node);
+            node.setPrevious(null);
+            node.setNext(head);
+            head.setPrevious(node);
             head = node;
         }
         size++;
@@ -132,10 +134,14 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
 
         while (!aux.isLastNode() && !found)
             if (aux.equals(node)) {
-                aux.getPrevious().setNext(aux.getNext());
-                aux.getNext().setPrevious(aux.getPrevious());
-                aux = null;
+                if(aux == head){
+                    deleteFirst();
+                } else {
+                    aux.getPrevious().setNext(aux.getNext());
+                    aux.getNext().setPrevious(aux.getPrevious());
+                }
                 found = true;
+                --size;
             } else
                 aux = aux.getNext();
 
