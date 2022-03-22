@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import sort.StringComparator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -246,7 +247,7 @@ public class DoubleLinkedListQueueTest {
     }
 
     @Test
-    @DisplayName("deleting an element from a empty queue")
+    @DisplayName("deleting an element from an empty queue")
     public void deleteElementEmptyQueue(){
         assertThrows(RuntimeException.class, () -> doubleLinkedListQueue.delete(new DequeNode("Test",null,null)));
     }
@@ -280,6 +281,67 @@ public class DoubleLinkedListQueueTest {
         assertNull(doubleLinkedListQueue.find(dequeNode));
         doubleLinkedListQueue.delete(dequeNodeLast);
         assertNull(doubleLinkedListQueue.find(dequeNodeLast));
+    }
+
+    @Test
+    @DisplayName("delete an element from queue reduces the size")
+    public void deleteAmElementFromQueueReduceSize(){
+        DequeNode dequeNodeFirst, dequeNodeLast;
+        DequeNode dequeNodeSecond = new DequeNode<String>("Second", null, null);
+        DequeNode dequeNodeThird = new DequeNode<String>("Third", null, null);
+        DequeNode dequeNodeForth = new DequeNode<String>("Forth", null, null);
+        dequeNodeFirst = new DequeNode<String>("First", null, null);
+        dequeNodeLast = new DequeNode<String>("Last", null, null);
+        doubleLinkedListQueue.append(dequeNodeFirst);
+        doubleLinkedListQueue.append(dequeNodeSecond);
+        doubleLinkedListQueue.append(dequeNodeThird);
+        doubleLinkedListQueue.append(dequeNodeForth);
+        doubleLinkedListQueue.append(dequeNodeLast);
+        //now the size should reduce
+        assertEquals(5,doubleLinkedListQueue.size());
+        doubleLinkedListQueue.delete(dequeNodeFirst);
+        assertEquals(4,doubleLinkedListQueue.size());
+        doubleLinkedListQueue.delete(dequeNodeSecond);
+        assertEquals(3,doubleLinkedListQueue.size());
+        doubleLinkedListQueue.delete(dequeNodeThird);
+        assertEquals(2,doubleLinkedListQueue.size());
+        doubleLinkedListQueue.delete(dequeNodeForth);
+        assertEquals(1,doubleLinkedListQueue.size());
+        doubleLinkedListQueue.delete(dequeNodeLast);
+        assertEquals(0,doubleLinkedListQueue.size());
+
+    }
+
+
+
+    @Test
+    @DisplayName("sorting a queue")
+    public void sortingAQueue(){
+        DequeNode dequeNodeFirst, dequeNodeLast;
+        DequeNode dequeNodeSecond = new DequeNode<String>("D", null, null);
+        DequeNode dequeNodeThird = new DequeNode<String>("C", null, null);
+        DequeNode dequeNodeForth = new DequeNode<String>("B", null, null);
+        dequeNodeFirst = new DequeNode<String>("E", null, null);
+        dequeNodeLast = new DequeNode<String>("A", null, null);
+        doubleLinkedListQueue.append(dequeNodeFirst);
+        doubleLinkedListQueue.append(dequeNodeSecond);
+        doubleLinkedListQueue.append(dequeNodeThird);
+        doubleLinkedListQueue.append(dequeNodeForth);
+        doubleLinkedListQueue.append(dequeNodeLast);
+        //Before sorting the queue
+        assertEquals(dequeNodeFirst,doubleLinkedListQueue.getAt(0));
+        assertEquals(dequeNodeSecond,doubleLinkedListQueue.getAt(1));
+        assertEquals(dequeNodeThird,doubleLinkedListQueue.getAt(2));
+        assertEquals(dequeNodeForth,doubleLinkedListQueue.getAt(3));
+        assertEquals(dequeNodeLast,doubleLinkedListQueue.getAt(4));
+        //After sorting
+        doubleLinkedListQueue.sort(new StringComparator());
+        assertEquals(dequeNodeLast,doubleLinkedListQueue.getAt(0));
+        assertEquals(dequeNodeForth,doubleLinkedListQueue.getAt(1));
+        assertEquals(dequeNodeThird,doubleLinkedListQueue.getAt(2));
+        assertEquals(dequeNodeSecond,doubleLinkedListQueue.getAt(3));
+        assertEquals(dequeNodeFirst,doubleLinkedListQueue.getAt(4));
+
     }
 
 
