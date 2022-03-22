@@ -16,10 +16,23 @@ public class DequeNodeTest<T> {
         dequeNodePrevious = null ;
     }
 
-
+    @Test
+    @DisplayName("Setting an item")
+    public void setNodeItem(){
+        dequeNode = new DequeNode<>("Start",null,null);
+        dequeNode.setItem("Changed");
+        assertEquals("Changed",dequeNode.getItem());
+    }
 
     @Test
-    @DisplayName("the list only contains one element")
+    @DisplayName("Passing null as an argument")
+    public void setNodeItemNull(){
+        dequeNode = new DequeNode<>("Start",null,null);
+        assertThrows(RuntimeException.class,() -> dequeNode.setItem(null)) ;
+    }
+
+    @Test
+    @DisplayName("The list only contains one element")
     public void listSizeIsOne() {
         dequeNode = new DequeNode<>("Start", null, null);
         assertAll(
@@ -35,7 +48,7 @@ public class DequeNodeTest<T> {
     }
 
     @Test
-    @DisplayName("the list contains two elements")
+    @DisplayName("The list contains two elements")
     public void listSizeIsTwo() {
         dequeNodeNext = new DequeNode<>("End", null, dequeNode);
         dequeNode = new DequeNode<>("Start", dequeNodeNext, null);
@@ -62,7 +75,7 @@ public class DequeNodeTest<T> {
     }
 
     @Test
-    @DisplayName("the list contains three elements")
+    @DisplayName("The list contains three elements")
     public void listSizeIsThree() {
         dequeNodeNext = new DequeNode<>("End", null, dequeNode);
         dequeNode = new DequeNode<>("Start", dequeNodeNext, dequeNodePrevious);
@@ -99,7 +112,7 @@ public class DequeNodeTest<T> {
     }
 
     @Test
-    @DisplayName("null is passed as the constructor's arguments")
+    @DisplayName("Null is passed as the constructor's arguments")
     public void wePassNullAsArgument() {
         assertThrows(RuntimeException.class, () -> dequeNode = new DequeNode<>(null,null,null)) ;
     }
