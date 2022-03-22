@@ -1,11 +1,10 @@
 ------------------------------------------------------
-
 /* DequeNode TestCases */
 
 --Exceptions
-Item=null - Exception
+Item =  null - Exception
 
---Size == 1
+--Size = 1
 
 Size=1	- getItem -> Returns Same Item 
 Size=1	- getNext -> Returns Same Item 
@@ -14,8 +13,8 @@ Size=1  - isFirstNode -> True
 Size=1  - isLastNode  -> True 
 Size=1	- isNotATerminalNode  -> False
 
---Size == 2 
---Item Position == first
+--Size = 2
+--Item Position = first
 
 Size=2	- getItem -> Returns the Same Item 
 Size=2	- getNext -> Returns the last Item of the list (next one) 
@@ -24,7 +23,7 @@ Size=2  - isFirstNode -> True
 Size=2  - isLastNode  -> False
 Size=2	- isNotATerminalNode  -> False
 
---Item Position == second
+--Item Position = second
 
 Size=2	- getItem -> Exception 
 Size=2	- getNext -> Returns the last Item of the list (next one) 
@@ -34,8 +33,8 @@ Size=2  - isLastNode  -> False
 Size=2	- isNotATerminalNode  -> False
 
 
---Size == 3 
---Item Position == First
+--Size = 3
+--Item Position = First
 
 Size=3	- getItem -> Returns the Same Item 
 Size=3	- getNext -> Returns the middle Item of the list (next one) 
@@ -44,7 +43,7 @@ Size=3  - isFirstNode -> True
 Size=3  - isLastNode  -> False
 Size=3	- isNotATerminalNode  -> False
 
---Item Positionition == Second
+--Item Positionition = Second
 
 Size=3	- getItem -> Returns the Same Item 
 Size=3	- getNext -> Returns the last Item of the list (next one) 
@@ -53,7 +52,7 @@ Size=3  - isFirstNode -> False
 Size=3  - isLastNode  -> False
 Size=3	- isNotATerminalNode  -> True
 
---Item Position == third
+--Item Position = third
 
 Size=3	- getItem -> Returns the Same Item 
 Size=3	- getNext -> Returns exception
@@ -69,14 +68,33 @@ Size=3	- isNotATerminalNode  -> False
 --Exceptions
 Empty Queue - DeleteFirst() -> Returns exception
 Empty Queue - DeleteLast() -> Returns exception
-            - append(null) -> Returns exception
-            - appendLeft(null) -> Returns exception
+Empty Queue - append(null) -> Returns exception
+Empty Queue - appendLeft(null) -> Returns exception
 
---Size
+--Size = general
 append() -> Increments size
 appendLeft() -> Increments size
 append() -> Decrements size
 appendLeft() -> Decrements size
+
+--Size = 0
+getAt(n) -> null
+
+--Size = 1
+
+--Size = 2
+--first we delete the last element then the first element
+
+deleteLast() -> size is 1
+deleteFirst() -> size is 0
+
+--first we delete the last element then the first element
+
+deleteFirst() -> size is 1
+deleteLast() -> size is 0
+
+--size=3
+
 
 --Peek
 peekFirst() -> Returns Head
@@ -87,5 +105,10 @@ peekLast() -> null
 peekFirst() -> null
 isEmpty() -> True
 
---3 Nodes Append()
+--Adding 3 Nodes
+--Append()
+--Item Position = first
+
+
+
 --3 Nodes AppendLeft()
