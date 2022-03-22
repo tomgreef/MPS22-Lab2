@@ -1,6 +1,6 @@
 package queue;
 
-import sort.StringComparator;
+import sort.DoubleLinkedListQueueComparator;
 
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -110,7 +110,7 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue<T> {
         DequeNode<T> node = first;
         int counter = 0;
 
-        if (position > size())
+        if (position > size() - 1)
             throw new RuntimeException("Position is outside of the queue");
 
         while (counter <= size())
@@ -138,8 +138,8 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue<T> {
     }
 
     @Override
-    public void delete(DequeNode node) {
-        DequeNode aux = first;
+    public void delete(DequeNode<T> node) {
+        DequeNode<T> aux = first;
         boolean found = false;
 
         while (aux != null && !found)
@@ -160,22 +160,22 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue<T> {
     }
 
     @Override
-    public void sort(Comparator comparator) {
-        List<DequeNode> list = new LinkedList<DequeNode>();
-        DequeNode aux = first;
+    public void sort(Comparator<?> comparator) {
+        List<DequeNode<T>> list = new LinkedList<DequeNode<T>>();
+        DequeNode<T> aux = first;
 
         while (aux.getNext() != null) {
             list.add(aux);
             aux = aux.getNext();
         }
 
-        list.sort(new StringComparator());
+        list.sort((Comparator<? super DequeNode<T>>) comparator);
         first = list.get(0);
         first.setPrevious(null);
         list.remove(first);
         aux = first;
 
-        for (DequeNode node : list) {
+        for (DequeNode<T> node : list) {
             aux.setNext(node);
             node.setPrevious(aux);
             aux = node;

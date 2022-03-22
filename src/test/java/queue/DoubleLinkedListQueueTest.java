@@ -4,7 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import sort.StringComparator;
+import sort.DoubleLinkedListQueueComparator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -177,7 +177,7 @@ public class DoubleLinkedListQueueTest {
     @Test
     @DisplayName("Getting an item when the size is 0 returns null")
     public void gettingItemInEmptyQueueReturnsNull(){
-        assertNull(doubleLinkedListQueue.getAt(0));
+        assertThrows(RuntimeException.class, () -> doubleLinkedListQueue.getAt(0));
     }
 
     @Test
@@ -190,7 +190,7 @@ public class DoubleLinkedListQueueTest {
         doubleLinkedListQueue.append(dequeNodeFirst);
         doubleLinkedListQueue.append(dequeNode);
         doubleLinkedListQueue.append(dequeNodeLast);
-        assertNull(doubleLinkedListQueue.getAt(3));
+        assertThrows(RuntimeException.class, () -> doubleLinkedListQueue.getAt(3));
     }
 
     @Test
@@ -332,7 +332,7 @@ public class DoubleLinkedListQueueTest {
         assertEquals(dequeNodeForth,doubleLinkedListQueue.getAt(3));
         assertEquals(dequeNodeLast,doubleLinkedListQueue.getAt(4));
         //After sorting
-        doubleLinkedListQueue.sort(new StringComparator());
+        doubleLinkedListQueue.sort(new DoubleLinkedListQueueComparator<>());
         assertEquals(dequeNodeLast,doubleLinkedListQueue.getAt(0));
         assertEquals(dequeNodeForth,doubleLinkedListQueue.getAt(1));
         assertEquals(dequeNodeThird,doubleLinkedListQueue.getAt(2));

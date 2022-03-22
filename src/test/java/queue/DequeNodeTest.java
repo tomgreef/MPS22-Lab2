@@ -28,9 +28,7 @@ public class DequeNodeTest<T> {
     @DisplayName("Passing null as an argument")
     public void setNodeItemNull(){
         dequeNode = new DequeNode<>("Start",null,null);
-
         assertThrows(RuntimeException.class,() -> dequeNode.setItem(null)) ;
-
     }
 
     @Test

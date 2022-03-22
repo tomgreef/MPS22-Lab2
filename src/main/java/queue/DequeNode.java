@@ -19,7 +19,6 @@ public class DequeNode<T> {
     }
 
     public void setNext(DequeNode<T> next) {
-        if(item==null)throw new RuntimeException("The element cannot be null");
         this.next = next;
     }
 
