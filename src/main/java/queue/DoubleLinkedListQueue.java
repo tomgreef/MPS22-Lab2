@@ -21,7 +21,7 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
             throw new RuntimeException("Node is null");
 
         if (head == null)
-            tail = head = node;   //you should use a while loop 
+            tail = head = node;   //you should use a while loop
         else {
             node.setNext(null);
             node.setPrevious(tail);
