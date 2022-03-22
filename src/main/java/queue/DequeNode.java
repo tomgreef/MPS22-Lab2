@@ -47,16 +47,16 @@ public class DequeNode<T> {
         if(next==this || previous==this) throw new RuntimeException("The passed element cannot be the same");
     }
 
-    public boolean isFirstNode() {
+    public boolean isHeadNode() {
         return previous == null;
     }
 
-    public boolean isLastNode() {
+    public boolean isTailNode() {
         return next == null;
     }
 
     public boolean isNotATerminalNode() {
-        return (!isFirstNode() && !isLastNode());
+        return (!isHeadNode() && !isTailNode());
     }
 
 }

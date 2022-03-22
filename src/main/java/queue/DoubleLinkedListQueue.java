@@ -48,7 +48,7 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
     }
 
     @Override
-    public void deleteFirst() {
+    public void deleteHead() {
         if (isEmpty())
             throw new RuntimeException("Queue is empty");
 
@@ -63,7 +63,7 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
     }
 
     @Override
-    public void deleteLast() {
+    public void deleteTail() {
         if (isEmpty())
             throw new RuntimeException("Queue is empty");
 
@@ -78,7 +78,7 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
     }
 
     @Override
-    public DequeNode peekFirst() {
+    public DequeNode peekHead() {
         if (isEmpty())
             return null;
 
@@ -86,7 +86,7 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
     }
 
     @Override
-    public DequeNode peekLast() {
+    public DequeNode peekTail() {
         if (isEmpty())
             return null;
 
@@ -103,7 +103,7 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
         DequeNode node = head;
         int counter = 0;
 
-        while (!node.isLastNode())
+        while (!node.isTailNode())
             if (counter == position)
                 return node;
             else {
@@ -118,7 +118,7 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
     public DequeNode find(Object item) {
         DequeNode node = head;
 
-        while (!node.isLastNode())
+        while (!node.isTailNode())
             if (node.equals(item))
                 return node;
             else
@@ -132,10 +132,10 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
         DequeNode aux = head;
         boolean found = false;
 
-        while (!aux.isLastNode() && !found)
+        while (!aux.isTailNode() && !found)
             if (aux.equals(node)) {
                 if(aux == head){
-                    deleteFirst();
+                    deleteHead();
                 } else {
                     aux.getPrevious().setNext(aux.getNext());
                     aux.getNext().setPrevious(aux.getPrevious());
