@@ -25,5 +25,5 @@ public interface DoubleEndedQueue<T> {
 
     void delete(DequeNode<T> node);
 
-    void sort(Comparator<?> comparator);
+    void sort(Comparator<DequeNode<T>> comparator);
 }

@@ -1,7 +1,5 @@
 package queue;
 
-import sort.DoubleLinkedListQueueComparator;
-
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
@@ -160,16 +158,16 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue<T> {
     }
 
     @Override
-    public void sort(Comparator<?> comparator) {
-        List<DequeNode<T>> list = new LinkedList<DequeNode<T>>();
+    public void sort(Comparator<DequeNode<T>> comparator) {
+        List<DequeNode<T>> list = new LinkedList<>();
         DequeNode<T> aux = first;
 
-        while (aux.getNext() != null) {
+        while (aux != null) {
             list.add(aux);
             aux = aux.getNext();
         }
 
-        list.sort((Comparator<? super DequeNode<T>>) comparator);
+        list.sort(comparator);
         first = list.get(0);
         first.setPrevious(null);
         list.remove(first);
@@ -181,7 +179,7 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue<T> {
             aux = node;
         }
 
-        last = list.get(list.size() - 1);
+        last = aux;
         last.setNext(null);
     }
 
