@@ -21,7 +21,7 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
             throw new RuntimeException("Node is null");
 
         if (head == null)
-            tail = head = node;
+            tail = head = node;   //you should use a while loop 
         else {
             node.setNext(null);
             node.setPrevious(tail);
@@ -116,6 +116,8 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
 
     @Override
     public DequeNode find(Object item) {
+        try{
+
         DequeNode node = head;
 
         while (!node.isTailNode())
@@ -125,6 +127,9 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
                 node = node.getNext();
 
         return null;
+        }catch (Exception exception){
+            return null;
+        }
     }
 
     @Override
@@ -154,7 +159,7 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
         List<DequeNode> list = new LinkedList<DequeNode>();
         DequeNode aux = head;
 
-        while(aux.getNext() != null){
+        while (aux.getNext() != null) {
             list.add(aux);
             aux = aux.getNext();
         }
@@ -165,13 +170,13 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
         list.remove(head);
         aux = head;
 
-        for (DequeNode node : list){
+        for (DequeNode node : list) {
             aux.setNext(node);
             node.setPrevious(aux);
             aux = node;
         }
 
-        tail = list.get(list.size()-1);
+        tail = list.get(list.size() - 1);
         tail.setNext(null);
     }
 
