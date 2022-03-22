@@ -24,12 +24,6 @@ public class DequeNodeTest<T> {
         assertEquals("Changed",dequeNode.getItem());
     }
 
-    @Test
-    @DisplayName("Passing null as an argument")
-    public void setNodeItemNull(){
-        dequeNode = new DequeNode<>("Start",null,null);
-        assertThrows(RuntimeException.class,() -> dequeNode.setItem(null)) ;
-    }
 
     @Test
     @DisplayName("The list only contains one element")
@@ -110,31 +104,5 @@ public class DequeNodeTest<T> {
                 () -> assertEquals(false, dequeNodeNext.isNotATerminalNode(), "Returns False")
         );
     }
-
-    @Test
-    @DisplayName("Null is passed as the constructor's arguments")
-    public void wePassNullAsArgument() {
-        assertThrows(RuntimeException.class, () -> dequeNode = new DequeNode<>(null,null,null)) ;
-    }
-
-
-
-
-//    @Test
-//    @Tag("Node")
-//    @DisplayName("the list contains two elements (element position is two)")
-//    public void listSizeIsTwoElementPosTwo() {
-//        dequeNodePrevious = new DequeNode<>("End", dequeNode, null);
-//        dequeNode = new DequeNode<>("Start", null, dequeNodePrevious);
-//        assertAll(
-//                "heading",
-//                () -> assertEquals("Start", dequeNode.getItem(), "It returns the same value"),
-//                () -> assertEquals(null, dequeNode.getNext(), "No finds element End"),
-//                () -> assertEquals(dequeNodePrevious, dequeNode.getPrevious(), "returns dequeNodePrevious"),
-//                () -> assertEquals(false, dequeNode.isFirstNode(), "Returns False"),
-//                () -> assertEquals(true, dequeNode.isLastNode(), "Returns True"),
-//                () -> assertEquals(false, dequeNode.isNotATerminalNode(), "Returns False")
-//        );
-//    }
 
 }

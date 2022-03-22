@@ -33,6 +33,13 @@ public class DoubleLinkedListQueueTest {
     }
 
     @Test
+    @DisplayName("Throws exception on appending null node")
+    public void testThrowsRuntimeExceptionIfAppendingNull() {
+        assertThrows(RuntimeException.class, () -> doubleLinkedListQueue.append(null));
+        assertThrows(RuntimeException.class, () -> doubleLinkedListQueue.appendLeft(null));
+    }
+
+    @Test
     @DisplayName("Delete decreases size (first we delete the last node later the first node)")
     public void testDeleteDecreasesSizeLastElementFirstElement() {
         DequeNode<String> dequeNode = new DequeNode<String>("Start", null, null);
@@ -61,6 +68,14 @@ public class DoubleLinkedListQueueTest {
     }
 
     @Test
+    @DisplayName("Throws exception on deleting in empty Queue")
+    public void testThrowsRuntimeExceptionIfEmpty() {
+        assertThrows(RuntimeException.class, () -> doubleLinkedListQueue.deleteFirst());
+        assertThrows(RuntimeException.class, () -> doubleLinkedListQueue.deleteLast());
+    }
+
+
+    @Test
     @DisplayName("Peek first item")
     public void testPeekFirstItem() {
         DequeNode<String> dequeNodeFirst, dequeNodeLast;
@@ -84,19 +99,6 @@ public class DoubleLinkedListQueueTest {
         assertEquals(dequeNodeLast, doubleLinkedListQueue.peekLast());
     }
 
-    @Test
-    @DisplayName("Throws exception on deleting in empty Queue")
-    public void testThrowsRuntimeExceptionIfEmpty() {
-        assertThrows(RuntimeException.class, () -> doubleLinkedListQueue.deleteFirst());
-        assertThrows(RuntimeException.class, () -> doubleLinkedListQueue.deleteLast());
-    }
-
-    @Test
-    @DisplayName("Throws exception on appending null node")
-    public void testThrowsRuntimeExceptionIfAppendingNull() {
-        assertThrows(RuntimeException.class, () -> doubleLinkedListQueue.append(null));
-        assertThrows(RuntimeException.class, () -> doubleLinkedListQueue.appendLeft(null));
-    }
 
     @Test
     @DisplayName("Return null on peeking in empty Queue")
@@ -209,13 +211,13 @@ public class DoubleLinkedListQueueTest {
     }
 
     @Test
-    @DisplayName("finding an element when the queue is null")
+    @DisplayName("Finding an element when the queue is empty")
     public void findingAnElementWithEmptyQueue(){
         assertNull(doubleLinkedListQueue.find("test"));
     }
 
     @Test
-    @DisplayName("finding an element when its not included in the queue")
+    @DisplayName("Finding an element when its not included in the queue")
     public void findingNonExistentElement(){
         DequeNode<String> dequeNode, dequeNodeFirst, dequeNodeLast;
         dequeNode = new DequeNode<String>("Middle", null, null);
