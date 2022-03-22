@@ -42,9 +42,9 @@ public class DoubleLinkedListQueueTest {
         doubleLinkedListQueue.append(dequeNode);
         doubleLinkedListQueue.appendLeft(dequeNode);
         assertEquals(2, doubleLinkedListQueue.size());
-        doubleLinkedListQueue.deleteLast();
+        doubleLinkedListQueue.deleteTail();
         assertEquals(1, doubleLinkedListQueue.size());
-        doubleLinkedListQueue.deleteFirst();
+        doubleLinkedListQueue.deleteHead();
         assertEquals(0, doubleLinkedListQueue.size());
     }
 
@@ -72,7 +72,7 @@ public class DoubleLinkedListQueueTest {
 
         doubleLinkedListQueue.append(dequeNodeLast);
         doubleLinkedListQueue.appendLeft(dequeNodeFirst);
-        assertEquals(dequeNodeFirst, doubleLinkedListQueue.peekFirst());
+        assertEquals(dequeNodeFirst, doubleLinkedListQueue.peekHead());
     }
 
     @Test
@@ -84,14 +84,14 @@ public class DoubleLinkedListQueueTest {
 
         doubleLinkedListQueue.appendLeft(dequeNodeFirst);
         doubleLinkedListQueue.append(dequeNodeLast);
-        assertEquals(dequeNodeLast, doubleLinkedListQueue.peekLast());
+        assertEquals(dequeNodeLast, doubleLinkedListQueue.peekTail());
     }
 
     @Test
     @DisplayName("Throws exception on deleting in empty Queue")
     public void testThrowsRuntimeExceptionIfEmpty() {
-        assertThrows(RuntimeException.class, () -> doubleLinkedListQueue.deleteFirst());
-        assertThrows(RuntimeException.class, () -> doubleLinkedListQueue.deleteLast());
+        assertThrows(RuntimeException.class, () -> doubleLinkedListQueue.deleteHead());
+        assertThrows(RuntimeException.class, () -> doubleLinkedListQueue.deleteTail());
     }
 
     @Test
@@ -104,8 +104,8 @@ public class DoubleLinkedListQueueTest {
     @Test
     @DisplayName("Return null on peeking in empty Queue")
     public void testReturnsNullIfPeekingInEmptyQueue() {
-        assertNull(doubleLinkedListQueue.peekLast());
-        assertNull(doubleLinkedListQueue.peekFirst());
+        assertNull(doubleLinkedListQueue.peekTail());
+        assertNull(doubleLinkedListQueue.peekHead());
     }
 
     @Test
@@ -117,7 +117,7 @@ public class DoubleLinkedListQueueTest {
         assertTrue(doubleLinkedListQueue.isEmpty());
         doubleLinkedListQueue.append(dequeNode);
         assertFalse(doubleLinkedListQueue.isEmpty());
-        doubleLinkedListQueue.deleteLast();
+        doubleLinkedListQueue.deleteTail();
         assertTrue(doubleLinkedListQueue.isEmpty());
     }
 
@@ -125,8 +125,8 @@ public class DoubleLinkedListQueueTest {
     @DisplayName("Constructor creates a DoubleLinkedListQueue")
     public void testCreatesADoubleLinkedListQueue() {
         assertEquals(0, doubleLinkedListQueue.size());
-        assertNull(doubleLinkedListQueue.peekLast());
-        assertNull(doubleLinkedListQueue.peekFirst());
+        assertNull(doubleLinkedListQueue.peekTail());
+        assertNull(doubleLinkedListQueue.peekHead());
         assertNotNull(doubleLinkedListQueue = new DoubleLinkedListQueue());
     }
 
@@ -141,16 +141,16 @@ public class DoubleLinkedListQueueTest {
         assertTrue(doubleLinkedListQueue.isEmpty());
         doubleLinkedListQueue.append(dequeNodeFirst);
         assertEquals(1, doubleLinkedListQueue.size());
-        assertSame(doubleLinkedListQueue.peekFirst(), dequeNodeFirst);
-        assertNotNull(doubleLinkedListQueue.peekLast()); // If 1 node, then first = last = node
+        assertSame(doubleLinkedListQueue.peekHead(), dequeNodeFirst);
+        assertNotNull(doubleLinkedListQueue.peekTail()); // If 1 node, then first = last = node
         doubleLinkedListQueue.append(dequeNode);
         assertEquals(2, doubleLinkedListQueue.size());
-        assertSame(doubleLinkedListQueue.peekFirst(), dequeNodeFirst);
-        assertSame(doubleLinkedListQueue.peekLast(), dequeNode);
+        assertSame(doubleLinkedListQueue.peekHead(), dequeNodeFirst);
+        assertSame(doubleLinkedListQueue.peekTail(), dequeNode);
         doubleLinkedListQueue.append(dequeNodeLast);
         assertEquals(3, doubleLinkedListQueue.size());
-        assertSame(doubleLinkedListQueue.peekFirst(), dequeNodeFirst);
-        assertSame(doubleLinkedListQueue.peekLast(), dequeNodeLast);
+        assertSame(doubleLinkedListQueue.peekHead(), dequeNodeFirst);
+        assertSame(doubleLinkedListQueue.peekTail(), dequeNodeLast);
     }
 
     @Test
@@ -164,16 +164,16 @@ public class DoubleLinkedListQueueTest {
         assertTrue(doubleLinkedListQueue.isEmpty());
         doubleLinkedListQueue.appendLeft(dequeNodeLast);
         assertEquals(1, doubleLinkedListQueue.size());
-        assertSame(doubleLinkedListQueue.peekFirst(), dequeNodeLast);
-        assertNotNull(doubleLinkedListQueue.peekLast()); // If 1 node, then first = last = node
+        assertSame(doubleLinkedListQueue.peekHead(), dequeNodeLast);
+        assertNotNull(doubleLinkedListQueue.peekTail()); // If 1 node, then first = last = node
         doubleLinkedListQueue.appendLeft(dequeNode);
         assertEquals(2, doubleLinkedListQueue.size());
-        assertSame(doubleLinkedListQueue.peekFirst(), dequeNode);
-        assertSame(doubleLinkedListQueue.peekLast(), dequeNodeLast);
+        assertSame(doubleLinkedListQueue.peekHead(), dequeNode);
+        assertSame(doubleLinkedListQueue.peekTail(), dequeNodeLast);
         doubleLinkedListQueue.appendLeft(dequeNodeFirst);
         assertEquals(3, doubleLinkedListQueue.size());
-        assertSame(doubleLinkedListQueue.peekFirst(), dequeNodeFirst);
-        assertSame(doubleLinkedListQueue.peekLast(), dequeNodeLast);
+        assertSame(doubleLinkedListQueue.peekHead(), dequeNodeFirst);
+        assertSame(doubleLinkedListQueue.peekTail(), dequeNodeLast);
     }
 
     //Complex Methods ------------------

@@ -8,13 +8,13 @@ public interface DoubleEndedQueue<T> {
 
     void appendLeft(DequeNode<T> node);
 
-    void deleteFirst();
+    void deleteHead();
 
-    void deleteLast();
+    void deleteTail();
 
-    DequeNode<T> peekFirst();
+    DequeNode<T> peekHead();
 
-    DequeNode<T> peekLast();
+    DequeNode<T> peekTail();
 
     int size();
 

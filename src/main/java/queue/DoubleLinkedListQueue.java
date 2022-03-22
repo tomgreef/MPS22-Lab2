@@ -23,8 +23,9 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
         if (head == null)
             tail = head = node;   //you should use a while loop
         else {
-            node.setNext(tail);
-            tail.setPrevious(node);
+            node.setNext(null);
+            node.setPrevious(tail);
+            tail.setNext(node);
             tail = node;
         }
         size++;
@@ -38,15 +39,16 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
         if (head == null)
             head = tail = node;
         else {
-            node.setPrevious(head);
-            head.setNext(node);
+            node.setPrevious(null);
+            node.setNext(head);
+            head.setPrevious(node);
             head = node;
         }
         size++;
     }
 
     @Override
-    public void deleteFirst() {
+    public void deleteHead() {
         if (isEmpty())
             throw new RuntimeException("Queue is empty");
 
@@ -61,7 +63,7 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
     }
 
     @Override
-    public void deleteLast() {
+    public void deleteTail() {
         if (isEmpty())
             throw new RuntimeException("Queue is empty");
 
@@ -76,7 +78,7 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
     }
 
     @Override
-    public DequeNode peekFirst() {
+    public DequeNode peekHead() {
         if (isEmpty())
             return null;
 
@@ -84,7 +86,7 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
     }
 
     @Override
-    public DequeNode peekLast() {
+    public DequeNode peekTail() {
         if (isEmpty())
             return null;
 
@@ -98,21 +100,18 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
 
     @Override
     public DequeNode getAt(int position) {
-        try {
-            DequeNode node = head;
-            int counter = 0;
+        DequeNode node = head;
+        int counter = 0;
 
-            while (!node.isLastNode())
-                if (counter == position)
-                    return node;
-                else {
-                    node = node.getNext();
-                    counter++;
-                }
-            return null;
-        } catch (Exception exception) {
-            return null;
-        }
+        while (!node.isTailNode())
+            if (counter == position)
+                return node;
+            else {
+                node = node.getNext();
+                counter++;
+            }
+
+        return null;
     }
 
     @Override
@@ -121,7 +120,7 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
 
         DequeNode node = head;
 
-        while (!node.isLastNode())
+        while (!node.isTailNode())
             if (node.equals(item))
                 return node;
             else
@@ -138,12 +137,16 @@ public class DoubleLinkedListQueue implements DoubleEndedQueue {
         DequeNode aux = head;
         boolean found = false;
 
-        while (!aux.isLastNode() && !found)
+        while (!aux.isTailNode() && !found)
             if (aux.equals(node)) {
-                aux.getPrevious().setNext(aux.getNext());
-                aux.getNext().setPrevious(aux.getPrevious());
-                aux = null;
+                if(aux == head){
+                    deleteHead();
+                } else {
+                    aux.getPrevious().setNext(aux.getNext());
+                    aux.getNext().setPrevious(aux.getPrevious());
+                }
                 found = true;
+                --size;
             } else
                 aux = aux.getNext();
 
