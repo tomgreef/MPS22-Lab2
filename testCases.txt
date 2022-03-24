@@ -110,4 +110,5 @@ Deleting an element from a queue - delete() -> removes the element from the queu
 Deleting an element from the queue - delete() -> size of the queue reduces
 
 ----- Sort -----
-Function Sort makes the queue sorted - Sort() -> converts the queue into a sorted one
+Function Sort converts the queue into an ascending one - Sort() -> converts the queue into a sorted one
+Function Sort converts the queue into a descending one - Sort() -> converts the queue into a sorted one

@@ -18,12 +18,10 @@ class DequeNodeTest<T> {
         dequeNodePrevious = null;
     }
 
-    @Test
-    @DisplayName("Setting an item")
     @ParameterizedTest
-    @ValueSource(strings = { "test1", "test2", "test3" })
-    @Tag("set")
-    void setNodeItem() {
+    @DisplayName("Setting an item")
+    @ValueSource(strings = {"test1", "test2", "test3"})
+    void setNodeItem(String item) {
         dequeNode = new DequeNode<>(item, null, null);
         dequeNode.setItem(item);
         assertEquals(item, dequeNode.getItem());
@@ -31,7 +29,6 @@ class DequeNodeTest<T> {
 
     @Test
     @DisplayName("The list only contains one element")
-    @Tag("size = 1")
     void listSizeIsOne() {
         dequeNode = new DequeNode<>("Start", null, null);
         assertAll(
@@ -47,7 +44,6 @@ class DequeNodeTest<T> {
 
     @Test
     @DisplayName("The list contains two elements")
-    @Tag("size = 2")
     void listSizeIsTwo() {
         dequeNodeNext = new DequeNode<>("End", null, dequeNode);
         dequeNode = new DequeNode<>("Start", dequeNodeNext, null);
@@ -74,7 +70,6 @@ class DequeNodeTest<T> {
 
     @Test
     @DisplayName("The list contains three elements")
-    @Tag("size = 3")
     void listSizeIsThree() {
         dequeNodeNext = new DequeNode<>("End", null, dequeNode);
         dequeNode = new DequeNode<>("Start", dequeNodeNext, dequeNodePrevious);
@@ -111,7 +106,6 @@ class DequeNodeTest<T> {
     }
 
     @Test
-    @Tag("Exceptions")
     @DisplayName("Null as Item of the constructor's argument throws RuntimeException")
     void wePassNullAsArgument() {
         assertThrows(RuntimeException.class, () -> dequeNode = new DequeNode<>(null, null, null));

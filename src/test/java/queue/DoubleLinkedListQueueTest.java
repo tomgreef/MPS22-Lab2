@@ -210,13 +210,13 @@ class DoubleLinkedListQueueTest {
 
     @Test
     @DisplayName("Finding an element when the queue is empty")
-    void findingAnElementWithEmptyQueue(){
+    void findingAnElementWithEmptyQueue() {
         assertNull(doubleLinkedListQueue.find("test"));
     }
 
     @Test
     @DisplayName("Finding an element when its not included in the queue")
-    void findingNonExistentElement(){
+    void findingNonExistentElement() {
         DequeNode<String> dequeNode, dequeNodeFirst, dequeNodeLast;
         dequeNode = new DequeNode<String>("Middle", null, null);
         dequeNodeFirst = new DequeNode<String>("First", null, null);
@@ -308,8 +308,8 @@ class DoubleLinkedListQueueTest {
     }
 
     @Test
-    @DisplayName("Sorting a queue")
-    void sortingAQueue() {
+    @DisplayName("Sorting a queue ascending")
+    void sortingAQueueAscending() {
         DequeNode<String> dequeNodeFirst, dequeNodeLast;
         DequeNode<String> dequeNodeSecond = new DequeNode<>("3", null, null);
         DequeNode<String> dequeNodeThird = new DequeNode<>("2", null, null);
@@ -334,5 +334,33 @@ class DoubleLinkedListQueueTest {
         assertEquals(dequeNodeThird, doubleLinkedListQueue.getAt(2));
         assertEquals(dequeNodeSecond, doubleLinkedListQueue.getAt(3));
         assertEquals(dequeNodeFirst, doubleLinkedListQueue.getAt(4));
+    }
+
+    @Test
+    @DisplayName("Sorting a queue descending")
+    void sortingAQueueDescending() {
+        DequeNode<String> dequeNodeFirst = new DequeNode<>("5", null, null);
+        DequeNode<String> dequeNodeSecond = new DequeNode<>("2", null, null);
+        DequeNode<String> dequeNodeThird = new DequeNode<>("3", null, null);
+        DequeNode<String> dequeNodeForth = new DequeNode<>("1", null, null);
+        DequeNode<String> dequeNodeLast = new DequeNode<>("4", null, null);
+        doubleLinkedListQueue.append(dequeNodeFirst);
+        doubleLinkedListQueue.append(dequeNodeSecond);
+        doubleLinkedListQueue.append(dequeNodeThird);
+        doubleLinkedListQueue.append(dequeNodeForth);
+        doubleLinkedListQueue.append(dequeNodeLast);
+        //Before sorting the queue
+        assertEquals(dequeNodeFirst, doubleLinkedListQueue.getAt(0));
+        assertEquals(dequeNodeSecond, doubleLinkedListQueue.getAt(1));
+        assertEquals(dequeNodeThird, doubleLinkedListQueue.getAt(2));
+        assertEquals(dequeNodeForth, doubleLinkedListQueue.getAt(3));
+        assertEquals(dequeNodeLast, doubleLinkedListQueue.getAt(4));
+        //After sorting
+        doubleLinkedListQueue.sort(new DequeNodeComparator<>(DequeNodeComparator.SortingOrder.DESC));
+        assertEquals(dequeNodeFirst, doubleLinkedListQueue.getAt(0));
+        assertEquals(dequeNodeLast, doubleLinkedListQueue.getAt(1));
+        assertEquals(dequeNodeThird, doubleLinkedListQueue.getAt(2));
+        assertEquals(dequeNodeSecond, doubleLinkedListQueue.getAt(3));
+        assertEquals(dequeNodeForth, doubleLinkedListQueue.getAt(4));
     }
 }
