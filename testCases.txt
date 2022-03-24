@@ -6,109 +6,105 @@ Item =  null - Exception
 
 --Size = 1
 
-Size=1	- getItem -> Returns Same Item 
-Size=1	- getNext -> Returns Same Item 
-Size=1	- getPrevious -> Returns Same Item
-Size=1  - isFirstNode -> True
-Size=1  - isLastNode  -> True 
-Size=1	- isNotATerminalNode  -> False
+Size=1	- getItem() -> Returns Same Item
+Size=1	- getNext() -> Returns Same Item
+Size=1	- getPrevious() -> Returns Same Item
+Size=1  - isFirstNode() -> True
+Size=1  - isLastNode()  -> True
+Size=1	- isNotATerminalNode()  -> False
 
 --Size = 2
 --Item Position = first
 
-Size=2	- getItem -> Returns the Same Item 
-Size=2	- getNext -> Returns the last Item of the list (next one) 
-Size=2	- getPrevious -> Returns Exception
-Size=2  - isFirstNode -> True
-Size=2  - isLastNode  -> False
-Size=2	- isNotATerminalNode  -> False
+Size=2	- getItem() -> Returns the Same Item
+Size=2	- getNext() -> Returns the last Item of the list (next one)
+Size=2	- getPrevious() -> Returns Exception
+Size=2  - isFirstNode() -> True
+Size=2  - isLastNode()  -> False
+Size=2	- isNotATerminalNode() -> False
 
 --Item Position = second
 
-Size=2	- getItem -> Exception 
-Size=2	- getNext -> Returns the last Item of the list (next one) 
-Size=2	- getPrevious -> Returns Exception
-Size=2  - isFirstNode -> True
-Size=2  - isLastNode  -> False
-Size=2	- isNotATerminalNode  -> False
-
+Size=2	- getItem() -> Exception
+Size=2	- getNext() -> Returns the last Item of the list (next one)
+Size=2	- getPrevious() -> Returns Exception
+Size=2  - isFirstNode() -> True
+Size=2  - isLastNode()  -> False
+Size=2	- isNotATerminalNode()  -> False
 
 --Size = 3
 --Item Position = First
 
-Size=3	- getItem -> Returns the Same Item 
-Size=3	- getNext -> Returns the middle Item of the list (next one) 
-Size=3	- getPrevious -> Returns Exception
-Size=3  - isFirstNode -> True
-Size=3  - isLastNode  -> False
-Size=3	- isNotATerminalNode  -> False
+Size=3	- getItem() -> Returns the Same Item
+Size=3	- getNext() -> Returns the middle Item of the list (next one)
+Size=3	- getPrevious() -> Returns Exception
+Size=3  - isFirstNode() -> True
+Size=3  - isLastNode()  -> False
+Size=3	- isNotATerminalNode()  -> False
 
 --Item Positionition = Second
 
-Size=3	- getItem -> Returns the Same Item 
-Size=3	- getNext -> Returns the last Item of the list (next one) 
-Size=3	- getPrevious -> Returns the first element
-Size=3  - isFirstNode -> False
-Size=3  - isLastNode  -> False
-Size=3	- isNotATerminalNode  -> True
+Size=3	- getItem() -> Returns the Same Item
+Size=3	- getNext() -> Returns the last Item of the list (next one)
+Size=3	- getPrevious() -> Returns the first element
+Size=3  - isFirstNode() -> False
+Size=3  - isLastNode()  -> False
+Size=3	- isNotATerminalNode()  -> True
 
 --Item Position = third
 
-Size=3	- getItem -> Returns the Same Item 
-Size=3	- getNext -> Returns exception
-Size=3	- getPrevious -> Returns the middle element
-Size=3  - isFirstNode -> False
-Size=3  - isLastNode  -> True
-Size=3	- isNotATerminalNode  -> False
-
+Size=3	- getItem() -> Returns the Same Item
+Size=3	- getNext() -> Returns exception
+Size=3	- getPrevious() -> Returns the middle element
+Size=3  - isFirstNode() -> False
+Size=3  - isLastNode()  -> True
+Size=3	- isNotATerminalNode()  -> False
 
 ------------------------------------------------------
 /* DoubleLinkedListQueueTest */
 
---Exceptions
-Empty Queue - DeleteFirst() -> Returns exception
-Empty Queue - DeleteLast() -> Returns exception
-Empty Queue - append(null) -> Returns exception
-Empty Queue - appendLeft(null) -> Returns exception
+----- Append -----
+Appending the queue increases it's size - append() -> queue size increases
+Appending the queue with a null item - append () -> returns RuntimeException
 
---Size = general
-append() -> Increments size
-appendLeft() -> Increments size
-append() -> Decrements size
-appendLeft() -> Decrements size
+----- LeftAppend -----
+Appending the queue increases it's size - leftAppend() -> queue size increases
+Appending the queue with a null item - leftAppend() -> returns RuntimeException
 
---Size = 0
-getAt(n) -> null
+----- DeleteFirst -----
+Deleting an element reduces the size of the queue - deleteFirst() -> reduces the size
+Deleting an element from an empty queue - deleteFirst() -> returns RuntimeException
 
---Size = 1
+----- DeleteLast -----
+Deleting an element reduces the size of the queue - deleteLast() -> reduces the size
+Deleting an element from an empty queue - deleteLast() -> returns RuntimeException
 
---Size = 2
---first we delete the last element then the first element
+----- PeekFirst -----
+PickFirst returns the first element of the queue - peekFirst() -> returns the first element
+PickFirst returns null when the queue is empty - peekFirst() -> returns null
 
-deleteLast() -> size is 1
-deleteFirst() -> size is 0
+----- PeekFirst -----
+PickLast returns the last element of the queue - peekLast() -> returns the last element
+PickFirst returns null when the queue is empty - peekLast() -> returns null
 
---first we delete the last element then the first element
+----- IsEmpty -----
+isEmpty returns the actual size of a non-empty queue - isEmpty() -> returns the size of the queue
 
-deleteFirst() -> size is 1
-deleteLast() -> size is 0
+----- GetAt -----
+Getting a non-element from an empty queue with the position 0 - getAt() -> returns RuntimeException
+Passing an argument bigger than the size of queue in the function GetAt - getAt() -> returns RuntimeException
+Getting an item with a concrete position located in the queue - getAt() -> returns the item located at that position
 
---size=3
+----- Find -----
+Finding an element from an empty queue - find() -> returns Null
+Finding a non-existent from a queue - find() -> returns Null
+Finding all the elements from a queue - delete() -> returns all the elements
 
+----- Delete -----
+Deleting an element from an empty queue - delete() -> returns RuntimeException
+Deleting a non existent from a queue - delete() -> returns RuntimeException
+Deleting an element from a queue - delete() -> removes the element from the queue
+Deleting an element from the queue - delete() -> size of the queue reduces
 
---Peek
-peekFirst() -> Returns Head
-peekLast() -> Returns Tail
-
---Empty Queue
-peekLast() -> null
-peekFirst() -> null
-isEmpty() -> True
-
---Adding 3 Nodes
---Append()
---Item Position = first
-
-
-
---3 Nodes AppendLeft()
+----- Sort -----
+Function Sort makes the queue sorted - Sort() -> converts the queue into a sorted one
