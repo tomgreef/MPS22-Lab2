@@ -12,7 +12,8 @@ import java.util.List;
  */
 
 public class DoubleLinkedListQueue<T> implements DoubleEndedQueue<T> {
-    private DequeNode<T> first, last;
+    private DequeNode<T> first;
+    private DequeNode<T> last;
     private int size;
 
     public DoubleLinkedListQueue() {
@@ -23,7 +24,7 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue<T> {
     @Override
     public void append(DequeNode<T> node) {
         if (node == null)
-            throw new RuntimeException("Node is null");
+            throw new DoubleLinkedListQueueException("Node is null");
 
         if (first == null)
             last = first = node;
@@ -39,7 +40,7 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue<T> {
     @Override
     public void appendLeft(DequeNode<T> node) {
         if (node == null)
-            throw new RuntimeException("Node is null");
+            throw new DoubleLinkedListQueueException("Node is null");
 
         if (first == null)
             first = last = node;
@@ -55,7 +56,7 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue<T> {
     @Override
     public void deleteFirst() {
         if (isEmpty())
-            throw new RuntimeException("Queue is empty");
+            throw new DoubleLinkedListQueueException("Queue is empty");
 
         first = first.getNext();
 
@@ -70,7 +71,7 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue<T> {
     @Override
     public void deleteLast() {
         if (isEmpty())
-            throw new RuntimeException("Queue is empty");
+            throw new DoubleLinkedListQueueException("Queue is empty");
 
         last = last.getPrevious();
 
@@ -109,7 +110,7 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue<T> {
         int counter = 0;
 
         if (position > size() - 1)
-            throw new RuntimeException("Position is outside of the queue");
+            throw new DoubleLinkedListQueueException("Position is outside of the queue");
 
         while (counter <= size())
             if (counter == position)
@@ -154,7 +155,7 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueue<T> {
                 aux = aux.getNext();
 
         if (!found)
-            throw new RuntimeException("Node: " + node + " not found");
+            throw new DoubleLinkedListQueueException("Node: " + node + " not found");
     }
 
     @Override

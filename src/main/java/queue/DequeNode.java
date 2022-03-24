@@ -40,10 +40,11 @@ public class DequeNode<T> {
     }
 
     public DequeNode(T item, DequeNode<T> next, DequeNode<T> previous) {
+        if (item == null) throw new DequeNodeException("Item cannot be null");
+        if (next != null && next.equals(previous)) throw new DequeNodeException("The passed nodes cannot be the same");
         this.item = item;
         this.next = next;
         this.previous = previous;
-        if (item == null) throw new RuntimeException("The passed element cannot be the same");
     }
 
     public boolean isHeadNode() {
