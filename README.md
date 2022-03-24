@@ -1,4 +1,5 @@
 # Test cases
+
 ---
 ## DequeNode TestCases
 ### Exceptions
@@ -9,59 +10,59 @@ Setting different values to a single node -> setItem() -> changes the item of th
 ---
 --Size = 1
 
-Size=1 - getItem() -> Returns Same Item
-Size=1 - getNext() -> Returns Same Item
-Size=1 - getPrevious() -> Returns Same Item
-Size=1 - isFirstNode() -> True
-Size=1 - isLastNode() -> True
-Size=1 - isNotATerminalNode() -> False
+- Size=1 - getItem() -> Returns Same Item
+- Size=1 - getNext() -> Returns Same Item
+- Size=1 - getPrevious() -> Returns Same Item
+- Size=1 - isFirstNode() -> True
+- Size=1 - isLastNode() -> True
+- Size=1 - isNotATerminalNode() -> False
 ---
 --Size = 2
 --Item Position = first
 
-Size=2 - getItem() -> Returns the Same Item
-Size=2 - getNext() -> Returns the last Item of the list (next one)
-Size=2 - getPrevious() -> Returns Exception
-Size=2 - isFirstNode() -> True
-Size=2 - isLastNode() -> False
-Size=2 - isNotATerminalNode() -> False
+- Size=2 - getItem() -> Returns the Same Item
+- Size=2 - getNext() -> Returns the last Item of the list (next one)
+- Size=2 - getPrevious() -> Returns Exception
+- Size=2 - isFirstNode() -> True
+- Size=2 - isLastNode() -> False
+- Size=2 - isNotATerminalNode() -> False
 ---
 --Item Position = second
 
-Size=2 - getItem() -> Exception
-Size=2 - getNext() -> Returns the last Item of the list (next one)
-Size=2 - getPrevious() -> Returns Exception
-Size=2 - isFirstNode() -> True
-Size=2 - isLastNode() -> False
-Size=2 - isNotATerminalNode() -> False
+- Size=2 - getItem() -> Exception
+- Size=2 - getNext() -> Returns the last Item of the list (next one)
+- Size=2 - getPrevious() -> Returns Exception
+- Size=2 - isFirstNode() -> True
+- Size=2 - isLastNode() -> False
+- Size=2 - isNotATerminalNode() -> False
 ---
 --Size = 3
 --Item Position = First
 
-Size=3 - getItem() -> Returns the Same Item
-Size=3 - getNext() -> Returns the middle Item of the list (next one)
-Size=3 - getPrevious() -> Returns Exception
-Size=3 - isFirstNode() -> True
-Size=3 - isLastNode() -> False
-Size=3 - isNotATerminalNode() -> False
+- Size=3 - getItem() -> Returns the Same Item
+- Size=3 - getNext() -> Returns the middle Item of the list (next one)
+- Size=3 - getPrevious() -> Returns Exception
+- Size=3 - isFirstNode() -> True
+- Size=3 - isLastNode() -> False
+- Size=3 - isNotATerminalNode() -> False
 
 --Item Position = Second
 
-Size=3 - getItem() -> Returns the Same Item
-Size=3 - getNext() -> Returns the last Item of the list (next one)
-Size=3 - getPrevious() -> Returns the first element
-Size=3 - isFirstNode() -> False
-Size=3 - isLastNode() -> False
-Size=3 - isNotATerminalNode() -> True
+- Size=3 - getItem() -> Returns the Same Item
+- Size=3 - getNext() -> Returns the last Item of the list (next one)
+- Size=3 - getPrevious() -> Returns the first element
+- Size=3 - isFirstNode() -> False
+- Size=3 - isLastNode() -> False
+- Size=3 - isNotATerminalNode() -> True
 
 --Item Position = Third
 
-Size=3 - getItem() -> Returns the Same Item
-Size=3 - getNext() -> Returns exception
-Size=3 - getPrevious() -> Returns the middle element
-Size=3 - isFirstNode() -> False
-Size=3 - isLastNode() -> True
-Size=3 - isNotATerminalNode() -> False
+- Size=3 - getItem() -> Returns the Same Item
+- Size=3 - getNext() -> Returns exception
+- Size=3 - getPrevious() -> Returns the middle element
+- Size=3 - isFirstNode() -> False
+- Size=3 - isLastNode() -> True
+- Size=3 - isNotATerminalNode() -> False
 
 ---
 ## DoubleLinkedListQueueTest
