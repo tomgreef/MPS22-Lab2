@@ -6,22 +6,24 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class DequeNodeTest<T> {
+class DequeNodeTest<T> {
     private DequeNode<String> dequeNode;
     private DequeNode<String> dequeNodeNext;
     private DequeNode<String> dequeNodePrevious;
 
     @AfterEach
-    public void tearDown() {
+    void tearDown() {
         dequeNode = null;
         dequeNodeNext = null;
         dequeNodePrevious = null;
     }
 
+    @Test
+    @DisplayName("Setting an item")
     @ParameterizedTest
     @ValueSource(strings = { "test1", "test2", "test3" })
     @Tag("set")
-    public void setNodeItem(String item) {
+    void setNodeItem() {
         dequeNode = new DequeNode<>(item, null, null);
         dequeNode.setItem(item);
         assertEquals(item, dequeNode.getItem());
@@ -30,7 +32,7 @@ public class DequeNodeTest<T> {
     @Test
     @DisplayName("The list only contains one element")
     @Tag("size = 1")
-    public void listSizeIsOne() {
+    void listSizeIsOne() {
         dequeNode = new DequeNode<>("Start", null, null);
         assertAll(
                 "heading",
@@ -40,14 +42,13 @@ public class DequeNodeTest<T> {
                 () -> assertTrue(dequeNode.isHeadNode(), "Returns True"),
                 () -> assertTrue(dequeNode.isTailNode(), "Returns True"),
                 () -> assertFalse(dequeNode.isNotATerminalNode(), "Returns False")
-
         );
     }
 
     @Test
     @DisplayName("The list contains two elements")
     @Tag("size = 2")
-    public void listSizeIsTwo() {
+    void listSizeIsTwo() {
         dequeNodeNext = new DequeNode<>("End", null, dequeNode);
         dequeNode = new DequeNode<>("Start", dequeNodeNext, null);
         dequeNodeNext.setPrevious(dequeNode);
@@ -74,7 +75,7 @@ public class DequeNodeTest<T> {
     @Test
     @DisplayName("The list contains three elements")
     @Tag("size = 3")
-    public void listSizeIsThree() {
+    void listSizeIsThree() {
         dequeNodeNext = new DequeNode<>("End", null, dequeNode);
         dequeNode = new DequeNode<>("Start", dequeNodeNext, dequeNodePrevious);
         dequeNodePrevious = new DequeNode<>("First", dequeNode, null);
@@ -110,10 +111,9 @@ public class DequeNodeTest<T> {
     }
 
     @Test
-    @DisplayName("Null is passed as the constructor's arguments")
     @Tag("Exceptions")
-    public void wePassNullAsArgument() {
+    @DisplayName("Null as Item of the constructor's argument throws RuntimeException")
+    void wePassNullAsArgument() {
         assertThrows(RuntimeException.class, () -> dequeNode = new DequeNode<>(null, null, null));
     }
-
 }
