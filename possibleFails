@@ -1,2 +1,0 @@
-In the method getAt, its necessary to include try and catch because when the queue is empty we dont have any
-Head so we cant execute isLastNode() --java.lang.NullPointerException: Cannot invoke "queue.DequeNode.isLastNode()" because "node" is null
