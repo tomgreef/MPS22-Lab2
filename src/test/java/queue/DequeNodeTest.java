@@ -4,7 +4,7 @@ import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class DequeNodeTest<T> {
+class DequeNodeTest<T> {
     private DequeNode<String> dequeNode;
     private DequeNode<String> dequeNodeNext;
     private DequeNode<String> dequeNodePrevious;
@@ -18,7 +18,7 @@ public class DequeNodeTest<T> {
 
     @Test
     @DisplayName("Setting an item")
-    public void setNodeItem() {
+    void setNodeItem() {
         dequeNode = new DequeNode<>("Start", null, null);
         dequeNode.setItem("Changed");
         assertEquals("Changed", dequeNode.getItem());
@@ -26,7 +26,7 @@ public class DequeNodeTest<T> {
 
     @Test
     @DisplayName("The list only contains one element")
-    public void listSizeIsOne() {
+    void listSizeIsOne() {
         dequeNode = new DequeNode<>("Start", null, null);
         assertAll(
                 "heading",
@@ -42,7 +42,7 @@ public class DequeNodeTest<T> {
 
     @Test
     @DisplayName("The list contains two elements")
-    public void listSizeIsTwo() {
+    void listSizeIsTwo() {
         dequeNodeNext = new DequeNode<>("End", null, dequeNode);
         dequeNode = new DequeNode<>("Start", dequeNodeNext, null);
         dequeNodeNext.setPrevious(dequeNode);
@@ -69,7 +69,7 @@ public class DequeNodeTest<T> {
 
     @Test
     @DisplayName("The list contains three elements")
-    public void listSizeIsThree() {
+    void listSizeIsThree() {
         dequeNodeNext = new DequeNode<>("End", null, dequeNode);
         dequeNode = new DequeNode<>("Start", dequeNodeNext, dequeNodePrevious);
         dequeNodePrevious = new DequeNode<>("First", dequeNode, null);
@@ -105,27 +105,8 @@ public class DequeNodeTest<T> {
     }
 
     @Test
-    @DisplayName("Null is passed as the constructor's arguments")
-    public void wePassNullAsArgument() {
+    @DisplayName("Null as Item of the constructor's argument throws RuntimeException")
+    void wePassNullAsArgument() {
         assertThrows(RuntimeException.class, () -> dequeNode = new DequeNode<>(null, null, null));
     }
-
-
-//    @Test
-//    @Tag("Node")
-//    @DisplayName("the list contains two elements (element position is two)")
-//    public void listSizeIsTwoElementPosTwo() {
-//        dequeNodePrevious = new DequeNode<>("End", dequeNode, null);
-//        dequeNode = new DequeNode<>("Start", null, dequeNodePrevious);
-//        assertAll(
-//                "heading",
-//                () -> assertEquals("Start", dequeNode.getItem(), "It returns the same value"),
-//                () -> assertEquals(null, dequeNode.getNext(), "No finds element End"),
-//                () -> assertEquals(dequeNodePrevious, dequeNode.getPrevious(), "returns dequeNodePrevious"),
-//                () -> assertEquals(false, dequeNode.isFirstNode(), "Returns False"),
-//                () -> assertEquals(true, dequeNode.isLastNode(), "Returns True"),
-//                () -> assertEquals(false, dequeNode.isNotATerminalNode(), "Returns False")
-//        );
-//    }
-
 }
