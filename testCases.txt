@@ -4,6 +4,9 @@
 --Exceptions
 Item =  null - Exception
 
+----- Set -----
+Setting different values to a single node -> setItem() -> changes the item of the node
+
 --Size = 1
 
 Size=1	- getItem() -> Returns Same Item

@@ -1,6 +1,8 @@
 package queue;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,16 +18,18 @@ public class DequeNodeTest<T> {
         dequeNodePrevious = null;
     }
 
-    @Test
-    @DisplayName("Setting an item")
-    public void setNodeItem() {
-        dequeNode = new DequeNode<>("Start", null, null);
-        dequeNode.setItem("Changed");
-        assertEquals("Changed", dequeNode.getItem());
+    @ParameterizedTest
+    @ValueSource(strings = { "test1", "test2", "test3" })
+    @Tag("set")
+    public void setNodeItem(String item) {
+        dequeNode = new DequeNode<>(item, null, null);
+        dequeNode.setItem(item);
+        assertEquals(item, dequeNode.getItem());
     }
 
     @Test
     @DisplayName("The list only contains one element")
+    @Tag("size = 1")
     public void listSizeIsOne() {
         dequeNode = new DequeNode<>("Start", null, null);
         assertAll(
@@ -42,6 +46,7 @@ public class DequeNodeTest<T> {
 
     @Test
     @DisplayName("The list contains two elements")
+    @Tag("size = 2")
     public void listSizeIsTwo() {
         dequeNodeNext = new DequeNode<>("End", null, dequeNode);
         dequeNode = new DequeNode<>("Start", dequeNodeNext, null);
@@ -63,12 +68,12 @@ public class DequeNodeTest<T> {
                 () -> assertFalse(dequeNodeNext.isHeadNode(), "Returns False"),
                 () -> assertTrue(dequeNodeNext.isTailNode(), "Returns True"),
                 () -> assertFalse(dequeNodeNext.isNotATerminalNode(), "Returns False")
-
         );
     }
 
     @Test
     @DisplayName("The list contains three elements")
+    @Tag("size = 3")
     public void listSizeIsThree() {
         dequeNodeNext = new DequeNode<>("End", null, dequeNode);
         dequeNode = new DequeNode<>("Start", dequeNodeNext, dequeNodePrevious);
@@ -106,26 +111,9 @@ public class DequeNodeTest<T> {
 
     @Test
     @DisplayName("Null is passed as the constructor's arguments")
+    @Tag("Exceptions")
     public void wePassNullAsArgument() {
         assertThrows(RuntimeException.class, () -> dequeNode = new DequeNode<>(null, null, null));
     }
-
-
-//    @Test
-//    @Tag("Node")
-//    @DisplayName("the list contains two elements (element position is two)")
-//    public void listSizeIsTwoElementPosTwo() {
-//        dequeNodePrevious = new DequeNode<>("End", dequeNode, null);
-//        dequeNode = new DequeNode<>("Start", null, dequeNodePrevious);
-//        assertAll(
-//                "heading",
-//                () -> assertEquals("Start", dequeNode.getItem(), "It returns the same value"),
-//                () -> assertEquals(null, dequeNode.getNext(), "No finds element End"),
-//                () -> assertEquals(dequeNodePrevious, dequeNode.getPrevious(), "returns dequeNodePrevious"),
-//                () -> assertEquals(false, dequeNode.isFirstNode(), "Returns False"),
-//                () -> assertEquals(true, dequeNode.isLastNode(), "Returns True"),
-//                () -> assertEquals(false, dequeNode.isNotATerminalNode(), "Returns False")
-//        );
-//    }
 
 }
